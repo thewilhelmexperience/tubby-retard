@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About TR | Tubby Retard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0066cc;
+            --sand: #f4e4bc;
+            --sunset-orange: #ff6b35;
+            --dark-navy: #1a1a2e;
+            --white: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(180deg, var(--ocean-blue) 0%, var(--dark-navy) 100%);
+            min-height: 100vh;
+            color: var(--dark-navy);
+        }
+        
+        header {
+            background: var(--sunset-orange);
+            padding: 1rem 0;
+            border-bottom: 5px solid var(--dark-navy);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0 var(--dark-navy);
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--white);
+            color: var(--sunset-orange);
+            border-color: var(--dark-navy);
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .content-box {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 5px solid var(--dark-navy);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .page-title {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--sunset-orange);
+            text-shadow: 2px 2px 0 var(--dark-navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tr-image {
+            width: 300px;
+            max-width: 100%;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 5px solid var(--dark-navy);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: var(--sunset-orange);
+            margin: 2rem 0 1rem;
+            border-bottom: 3px dashed var(--dark-navy);
+            padding-bottom: 0.5rem;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .fun-facts {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid var(--dark-navy);
+            margin: 2rem 0;
+        }
+        
+        .fun-facts h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            color: var(--sunset-orange);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .fun-facts ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .fun-facts li {
+            font-size: 1.1rem;
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px dashed rgba(0,0,0,0.2);
+        }
+        
+        .fun-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .fun-facts li::before {
+            content: "⚓";
+            position: absolute;
+            left: 0;
+            color: var(--sunset-orange);
+        }
+        
+        .quote {
+            background: var(--sunset-orange);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 3px solid var(--dark-navy);
+        }
+        
+        .quote-author {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--sunset-orange);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .page-title { font-size: 2rem; }
+            .content-box { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <div class="logo">TUBBY RETARD</div>
+                <div class="tagline">The World's Worst Yacht Owner</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Latest</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="about.html" class="active">About TR</a></li>
+                    <li><a href="submit.html">Submit Story</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-box">
+            <h1 class="page-title">Meet TR</h1>
+            
+            <img src="tr-character.png" alt="Tubby Retard Character" class="tr-image">
+            
+            <p><strong>Tubby Retard (TR)</strong> is a fictional character — a satirical embodiment of every terrible yacht owner story you've ever heard (and probably a few you haven't).</p>
+            
+            <p>With his signature Hawaiian shirt, flip-flops, and permanent sunburn, TR bounces around the world's marinas leaving chaos in his wake. He treats crew like disposable furniture, ignores safety protocols he doesn't understand, and somehow always blames everyone else when things go wrong.</p>
+            
+            <div class="quote">
+                "Safety briefing? I bought the boat, didn't I? That means I know everything about it already!"
+                <span class="quote-author">— TR, moments before disaster</span>
+            </div>
+            
+            <h2>Why TR Exists</h2>
+            
+            <p>This web comic was created as a creative outlet for yacht crew members who've experienced the... let's call them "unique personalities" that sometimes come with the territory.</p>
+            
+            <p>By fictionalizing these stories through TR, crew can:</p>
+            <ul style="font-size: 1.2rem; line-height: 1.8; margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li>Share experiences without violating NDAs</li>
+                <li>Find humor in difficult situations</li>
+                <li>Connect with others who've been there</li>
+                <li>Highlight the importance of good yacht management</li>
+            </ul>
+            
+            <div class="fun-facts">
+                <h3>⚓ TR's Yachting Credentials</h3>
+                <ul>
+                    <li>Boat License: "I watched a YouTube video once"</li>
+                    <li>Navigation Skills: GPS voice is his best friend</li>
+                    <li>Crew Management: Yells louder when things break</li>
+                    <li>Safety Record: "That's what insurance is for!"</li>
+                    <li>Favorite Marina: The one with the cheapest fuel</li>
+                    <li>Relationship with Immigration: "Complicated"</li>
+                </ul>
+            </div>
+            
+            <h2>The Real Story</h2>
+            
+            <p>Every comic strip is based on anonymous submissions from actual yacht crew members. While TR is fictional, the situations he finds himself in are all too real.</p>
+            
+            <p>We respect the privacy and NDAs of all contributors. Names are changed, details are exaggerated for comedic effect, but the core experiences? Those are genuine.</p>
+            
+            <p>Got a TR story of your own? <a href="submit.html" style="color: var(--sunset-orange); font-weight: bold;">Submit it here</a> and see it brought to life!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Back to Comics</a> | <a href="submit.html">Submit Your Story →</a></p>
+        <p class="disclaimer">Tubby Retard is a work of satire. Any resemblance to actual yacht owners is purely coincidental.</p>
+        <p>&copy; 2026 Tubby Retard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

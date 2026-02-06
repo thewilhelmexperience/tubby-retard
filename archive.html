@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Archive | Tubby Retard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0066cc;
+            --sand: #f4e4bc;
+            --sunset-orange: #ff6b35;
+            --dark-navy: #1a1a2e;
+            --white: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(180deg, var(--ocean-blue) 0%, var(--dark-navy) 100%);
+            min-height: 100vh;
+            color: var(--dark-navy);
+        }
+        
+        header {
+            background: var(--sunset-orange);
+            padding: 1rem 0;
+            border-bottom: 5px solid var(--dark-navy);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0 var(--dark-navy);
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--white);
+            color: var(--sunset-orange);
+            border-color: var(--dark-navy);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-title {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0 var(--dark-navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .archive-item {
+            background: var(--sand);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 4px solid var(--dark-navy);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark-navy);
+        }
+        
+        .archive-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .archive-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ddd 0%, #bbb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid var(--dark-navy);
+        }
+        
+        .archive-thumb span {
+            font-family: 'Bangers', cursive;
+            font-size: 4rem;
+            color: var(--sunset-orange);
+        }
+        
+        .archive-info {
+            padding: 1.5rem;
+        }
+        
+        .archive-number {
+            background: var(--sunset-orange);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .archive-title {
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            color: var(--sunset-orange);
+            margin-bottom: 0.5rem;
+        }
+        
+        .archive-date {
+            color: var(--dark-navy);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--sunset-orange);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .page-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <div class="logo">TUBBY RETARD</div>
+                <div class="tagline">The World's Worst Yacht Owner</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Latest</a></li>
+                    <li><a href="archive.html" class="active">Archive</a></li>
+                    <li><a href="about.html">About TR</a></li>
+                    <li><a href="submit.html">Submit Story</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">📚 Comic Archive</h1>
+        
+        <div class="archive-grid">
+            <a href="index.html" class="archive-item">
+                <div class="archive-thumb">
+                    <span>#001</span>
+                </div>
+                <div class="archive-info">
+                    <span class="archive-number">Episode #001</span>
+                    <h2 class="archive-title">The Safety Briefing</h2>
+                    <p class="archive-date">February 6, 2026</p>
+                </div>
+            </a>
+            
+            <!-- More comics will be added here -->
+            <div class="archive-item" style="opacity: 0.5;">
+                <div class="archive-thumb" style="background: #333;">
+                    <span style="color: #666;">#002</span>
+                </div>
+                <div class="archive-info">
+                    <span class="archive-number">Coming Soon</span>
+                    <h2 class="archive-title">TBD</h2>
+                    <p class="archive-date">Submit your story!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Back to Latest Comic</a></p>
+        <p class="disclaimer">Tubby Retard is a work of satire. Any resemblance to actual yacht owners is purely coincidental.</p>
+        <p>&copy; 2026 Tubby Retard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubby Retard | A Yacht Owner Satire Comic</title>
+    <meta name="description" content="The misadventures of TR - a satirical web comic about the world's worst yacht owner. Based on true crew stories.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0066cc;
+            --sand: #f4e4bc;
+            --sunset-orange: #ff6b35;
+            --dark-navy: #1a1a2e;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(180deg, var(--ocean-blue) 0%, var(--dark-navy) 100%);
+            min-height: 100vh;
+            color: var(--dark-navy);
+        }
+        
+        /* Header */
+        header {
+            background: var(--sunset-orange);
+            padding: 1rem 0;
+            border-bottom: 5px solid var(--dark-navy);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0 var(--dark-navy);
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--white);
+            color: var(--sunset-orange);
+            border-color: var(--dark-navy);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .comic-container {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 5px solid var(--dark-navy);
+        }
+        
+        .comic-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px dashed var(--dark-navy);
+        }
+        
+        .comic-title {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: var(--sunset-orange);
+            text-shadow: 2px 2px 0 var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .comic-date {
+            color: var(--dark-navy);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .comic-number {
+            background: var(--sunset-orange);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .comic-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 3px solid var(--dark-navy);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .comic-caption {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 3px solid var(--dark-navy);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        /* Navigation between comics */
+        .comic-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 3px dashed var(--dark-navy);
+        }
+        
+        .comic-nav a {
+            background: var(--sunset-orange);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 3px solid var(--dark-navy);
+        }
+        
+        .comic-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .comic-nav a.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        /* Share buttons */
+        .share-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+        }
+        
+        .share-section h3 {
+            margin-bottom: 1rem;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .share-twitter { background: #1da1f2; }
+        .share-facebook { background: #4267B2; }
+        .share-reddit { background: #ff4500; }
+        
+        /* Comments Section */
+        .comments-section {
+            margin-top: 3rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 5px solid var(--dark-navy);
+        }
+        
+        .comments-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: var(--sunset-orange);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        footer a {
+            color: var(--sunset-orange);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #888;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .comic-title {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <div class="logo">TUBBY RETARD</div>
+                <div class="tagline">The World's Worst Yacht Owner</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Latest</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="about.html">About TR</a></li>
+                    <li><a href="submit.html">Submit Story</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="comic-container">
+            <div class="comic-header">
+                <span class="comic-number">#001</span>
+                <h1 class="comic-title">The Safety Briefing</h1>
+                <p class="comic-date">February 6, 2026</p>
+            </div>
+            
+            <img src="comics/comic-001.jpg" alt="Tubby Retard Comic #1" class="comic-image">
+            
+            <div class="comic-caption">
+                TR has a very particular way of conducting safety briefings. Mainly, he skips them entirely and asks the crew to "just figure it out."
+            </div>
+            
+            <div class="comic-nav">
+                <a href="#" class="disabled">← Previous</a>
+                <a href="#">Next →</a>
+            </div>
+            
+            <div class="share-section">
+                <h3>Share This Comic</h3>
+                <div class="share-buttons">
+                    <a href="#" class="share-btn share-twitter">Twitter</a>
+                    <a href="#" class="share-btn share-facebook">Facebook</a>
+                    <a href="#" class="share-btn share-reddit">Reddit</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comments-section">
+            <h2>💬 Join the Discussion</h2>
+            <!-- Disqus embed code goes here -->
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = window.location.href;
+                    this.page.identifier = 'comic-001';
+                };
+                (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://tubbyretard.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>Tubby Retard</strong> is a work of satire. Any resemblance to actual yacht owners, living or deported, is purely coincidental.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="submit.html">Submit Story</a>
+        </div>
+        <p class="disclaimer">
+            All stories are submitted anonymously by yacht crew members. TR is a fictional character. 
+            We respect NDAs and protect the identity of all contributors. This comic is intended for 
+            entertainment purposes only and to highlight the importance of proper yacht management.
+        </p>
+        <p>&copy; 2026 Tubby Retard. All rights reserved.</p>
+    </footer>
+</body>
+</html>
