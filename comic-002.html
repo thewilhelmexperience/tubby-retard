@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tubby Retard | A Yacht Owner Satire Comic</title>
-    <meta name="description" content="The misadventures of TR - a satirical web comic about the world's worst yacht owner. Based on true crew stories.">
+    <title>The Safety Briefing | Tubby Retard Comic #002</title>
+    <meta name="description" content="TR conducts his first safety briefing. It goes about as well as you'd expect.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -16,11 +16,7 @@
             --white: #ffffff;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Comic Neue', cursive;
@@ -29,7 +25,6 @@
             color: var(--dark-navy);
         }
         
-        /* Header */
         header {
             background: var(--sunset-orange);
             padding: 1rem 0;
@@ -62,7 +57,6 @@
             font-weight: 700;
         }
         
-        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -87,7 +81,6 @@
             border-color: var(--dark-navy);
         }
         
-        /* Main Content */
         main {
             max-width: 1000px;
             margin: 2rem auto;
@@ -153,7 +146,6 @@
             text-align: center;
         }
         
-        /* Navigation between comics */
         .comic-nav {
             display: flex;
             justify-content: space-between;
@@ -179,13 +171,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
-        .comic-nav a.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-        
-        /* Share buttons */
         .share-section {
             text-align: center;
             margin-top: 2rem;
@@ -216,15 +201,11 @@
             transition: all 0.3s ease;
         }
         
-        .share-btn:hover {
-            transform: translateY(-2px);
-        }
-        
+        .share-btn:hover { transform: translateY(-2px); }
         .share-twitter { background: #1da1f2; }
         .share-facebook { background: #4267B2; }
         .share-reddit { background: #ff4500; }
         
-        /* Comments Section */
         .comments-section {
             margin-top: 3rem;
             background: var(--white);
@@ -241,7 +222,6 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Footer */
         footer {
             background: var(--dark-navy);
             color: var(--white);
@@ -250,9 +230,7 @@
             margin-top: 3rem;
         }
         
-        footer p {
-            margin-bottom: 1rem;
-        }
+        footer p { margin-bottom: 1rem; }
         
         .footer-links {
             display: flex;
@@ -266,10 +244,6 @@
             text-decoration: none;
         }
         
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
         .disclaimer {
             font-size: 0.85rem;
             color: #888;
@@ -278,22 +252,8 @@
         }
         
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .comic-title {
-                font-size: 1.8rem;
-            }
-            
-            nav ul {
-                gap: 1rem;
-            }
-            
-            nav a {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
+            .logo { font-size: 2rem; }
+            .comic-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -306,7 +266,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Latest</a></li>
+                    <li><a href="index.html">Latest</a></li>
                     <li><a href="archive.html">Archive</a></li>
                     <li><a href="about.html">About TR</a></li>
                     <li><a href="submit.html">Submit Story</a></li>
@@ -318,25 +278,25 @@
     <main>
         <div class="comic-container">
             <div class="comic-header">
-                <span class="comic-number">#001</span>
-                <h1 class="comic-title">Move Over, I'm Driving</h1>
+                <span class="comic-number">#002</span>
+                <h1 class="comic-title">The Safety Briefing</h1>
                 <p class="comic-date">February 6, 2026</p>
             </div>
             
             <div class="comic-strip">
-                <img src="comics/published/comic-001-panel1.jpg" alt="Panel 1: Maritime Education" class="comic-image">
-                <img src="comics/published/comic-001-panel2.jpg" alt="Panel 2: The Trick" class="comic-image">
-                <img src="comics/published/comic-001-panel3.jpg" alt="Panel 3: Winning" class="comic-image">
-                <img src="comics/published/comic-001-panel4.jpg" alt="Panel 4: Magellan" class="comic-image">
+                <img src="comics/published/comic-002-panel1.jpg" alt="Panel 1: Safety Briefing Time" class="comic-image">
+                <img src="comics/published/comic-002-panel2.jpg" alt="Panel 2: Rule #1" class="comic-image">
+                <img src="comics/published/comic-002-panel3.jpg" alt="Panel 3: Fire Extinguishers" class="comic-image">
+                <img src="comics/published/comic-002-panel4.jpg" alt="Panel 4: Any Other Questions" class="comic-image">
             </div>
             
             <div class="comic-caption">
-                TR offers to "help" navigate through a busy channel. His instincts are built for finding buffets, not avoiding sandbanks.
+                TR finally decides to hold a safety briefing. The crew may never recover.
             </div>
             
             <div class="comic-nav">
-                <a href="#" class="disabled">← Previous</a>
-                <a href="comic-002.html">Next →</a>
+                <a href="index.html">← Previous</a>
+                <a href="#" class="disabled">Next →</a>
             </div>
             
             <div class="share-section">
@@ -355,7 +315,7 @@
             <script>
                 var disqus_config = function () {
                     this.page.url = window.location.href;
-                    this.page.identifier = 'comic-001';
+                    this.page.identifier = 'comic-002';
                 };
                 (function() {
                     var d = document, s = d.createElement('script');
