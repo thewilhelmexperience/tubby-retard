@@ -301,7 +301,9 @@
                 <p>All submissions are anonymous. We never share your identity, vessel names, or any identifying details. Stories may be adapted and exaggerated for comedic effect while maintaining the core experience.</p>
             </div>
             
-            <form action="#" method="POST">
+            <!-- Formspree form backend - Sign up at formspree.io to get your form ID -->
+<!-- Replace FORMSPREE_ID with your actual form endpoint (e.g., xnqkvpzy) -->
+<form action="https://formspree.io/f/FORMSPREE_ID" method="POST">
                 <div class="form-group">
                     <label for="story-title">Suggested Title</label>
                     <input type="text" id="story-title" name="title" placeholder="e.g., 'The Great Anchor Drift of 2023'" required>
@@ -350,6 +352,20 @@
                 <h3>Prefer Email?</h3>
                 <p>Send your story directly to<br>
                 <a href="mailto:stories@tubbyretard.com" class="email-link">stories@tubbyretard.com</a></p>
+            </div>
+            
+            <div class="guidelines" style="background: #e8f4f8; border-color: #0066cc;">
+                <h3 style="color: #0066cc;">🛠️ For Site Admin: Setup Instructions</h3>
+                <p><strong>To make this form functional:</strong></p>
+                <ol style="margin-left: 1.5rem; line-height: 1.8;">
+                    <li>Go to <a href="https://formspree.io" target="_blank" style="color: #0066cc;">formspree.io</a></li>
+                    <li>Create a free account</li>
+                    <li>Create a new form and copy your form ID (looks like: xnqkvpzy)</li>
+                    <li>Update the form action in this file:<br>
+                    <code>action="https://formspree.io/f/YOUR_FORM_ID"</code></li>
+                    <li>Submissions will be emailed to your configured address</li>
+                </ol>
+                <p style="margin-top: 1rem;"><strong>Free tier:</strong> 50 submissions/month</p>
             </div>
         </div>
     </main>
