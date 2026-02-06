@@ -346,25 +346,15 @@
         
         <div class="comments-section">
             <h2>💬 Join the Discussion</h2>
-            <!-- Disqus Setup Instructions:
-                 1. Go to https://disqus.com/admin/create/
-                 2. Create a new site with shortname: tubbyretard
-                 3. Choose "I want to install Disqus on my site"
-                 4. Select your platform (Universal Code)
-                 5. Copy your unique shortname and replace DISQUS_SHORTNAME below
-            -->
             <div id="disqus_thread"></div>
             <script>
-                // CONFIGURATION: Replace with your Disqus shortname
-                var DISQUS_SHORTNAME = 'tubbyretard';
-                
                 var disqus_config = function () {
                     this.page.url = window.location.href;
                     this.page.identifier = 'comic-001';
                 };
                 (function() {
                     var d = document, s = d.createElement('script');
-                    s.src = 'https://' + DISQUS_SHORTNAME + '.disqus.com/embed.js';
+                    s.src = 'https://tubbyretard.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
                 })();
