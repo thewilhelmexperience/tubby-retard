@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Submitted! | Tubby Retard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0066cc;
+            --sand: #f4e4bc;
+            --sunset-orange: #ff6b35;
+            --dark-navy: #1a1a2e;
+            --white: #ffffff;
+            --success-green: #28a745;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(180deg, var(--ocean-blue) 0%, var(--dark-navy) 100%);
+            min-height: 100vh;
+            color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .success-card {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+            border: 5px solid var(--dark-navy);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 0.6s ease-out;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: var(--success-green);
+            text-shadow: 2px 2px 0 var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--dark-navy);
+        }
+        
+        .process-steps {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 3px solid var(--dark-navy);
+            text-align: left;
+        }
+        
+        .process-steps h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.3rem;
+            color: var(--sunset-orange);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-icon {
+            font-size: 1.5rem;
+            min-width: 2rem;
+        }
+        
+        .home-btn {
+            display: inline-block;
+            background: var(--sunset-orange);
+            color: var(--white);
+            border: 3px solid var(--dark-navy);
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Bangers', cursive;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: #ff8555;
+        }
+        
+        .note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--dark-navy);
+            border-left: 4px solid var(--sunset-orange);
+        }
+        
+        @media (max-width: 600px) {
+            .success-card { padding: 2rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="success-icon">🎉</div>
+        <h1>Story Submitted!</h1>
+        <p class="message">
+            Your TR-worthy tale has been received and is being processed for comic script generation!
+        </p>
+        
+        <div class="process-steps">
+            <h3>What Happens Next?</h3>
+            <div class="step">
+                <span class="step-icon">✅</span>
+                <span>Your submission is being sanitized and validated</span>
+            </div>
+            <div class="step">
+                <span class="step-icon">🤖</span>
+                <span>Our AI parrot generates a comic script draft</span>
+            </div>
+            <div class="step">
+                <span class="step-icon">📝</span>
+                <span>Script is saved for editorial review</span>
+            </div>
+            <div class="step">
+                <span class="step-icon">🎨</span>
+                <span>Approved stories become comics!</span>
+            </div>
+        </div>
+        
+        <a href="index.html" class="home-btn">← Back to Comics</a>
+        
+        <div class="note">
+            <strong>Note:</strong> All submissions are anonymous. We never share your identity or vessel details. Stories may be adapted for comedic effect.
+        </div>
+    </div>
+</body>
+</html>

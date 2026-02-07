@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! | Tubby Retard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0066cc;
+            --sand: #f4e4bc;
+            --sunset-orange: #ff6b35;
+            --dark-navy: #1a1a2e;
+            --white: #ffffff;
+            --error-red: #dc3545;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(180deg, var(--ocean-blue) 0%, var(--dark-navy) 100%);
+            min-height: 100vh;
+            color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .error-card {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+            border: 5px solid var(--dark-navy);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: var(--error-red);
+            text-shadow: 2px 2px 0 var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--dark-navy);
+        }
+        
+        .troubleshooting {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 3px solid var(--dark-navy);
+            text-align: left;
+        }
+        
+        .troubleshooting h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.3rem;
+            color: var(--sunset-orange);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .troubleshooting ul {
+            margin-left: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .troubleshooting li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--sunset-orange);
+            color: var(--white);
+            border: 3px solid var(--dark-navy);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Bangers', cursive;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: #ff8555;
+        }
+        
+        .btn-secondary {
+            background: var(--dark-navy);
+        }
+        
+        .btn-secondary:hover {
+            background: #2d2d4a;
+        }
+        
+        @media (max-width: 600px) {
+            .error-card { padding: 2rem; }
+            h1 { font-size: 2rem; }
+            .button-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-card">
+        <div class="error-icon">😅</div>
+        <h1>Oops! Something Went Wrong</h1>
+        <p class="message">
+            We couldn't process your submission right now. Don't worry — it's probably not as bad as one of TR's docking attempts.
+        </p>
+        
+        <div class="troubleshooting">
+            <h3>Try These Fixes:</h3>
+            <ul>
+                <li>Make sure you filled out the title and story fields</li>
+                <li>Keep your story between 20 and 2000 characters</li>
+                <li>Avoid including URLs or suspicious content</li>
+                <li>Check your internet connection and try again</li>
+            </ul>
+        </div>
+        
+        <div class="button-group">
+            <a href="submit.html" class="btn">Try Again →</a>
+            <a href="mailto:stories@tubbyretard.com" class="btn btn-secondary">📧 Email Instead</a>
+        </div>
+    </div>
+</body>
+</html>

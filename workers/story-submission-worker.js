@@ -121,13 +121,8 @@ export default {
       // Validate submission
       if (!isValidSubmission(title, story, location)) {
         console.log('Rejected invalid/spam submission:', { title: title.substring(0, 50) });
-        return new Response(JSON.stringify({ 
-          success: false, 
-          error: 'Invalid submission - please provide a valid title and story' 
-        }), { 
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        });
+        // Redirect to error page with validation message
+        return Response.redirect('https://tubbyretard.com/submit-error.html?error=validation', 302);
       }
       
       // Generate slug for tracking
@@ -171,40 +166,18 @@ Mark the script as [DRAFT - PENDING REVIEW] in the header.`,
         const errorText = await openclawResponse.text();
         console.error('OpenClaw hook failed:', errorText);
         
-        // Return success to form anyway (don't expose backend issues to user)
-        return new Response(JSON.stringify({ 
-          success: true, 
-          message: 'Submission received! Your story is being processed.' 
-        }), { 
-          status: 200,
-          headers: { 'Content-Type': 'application/json' }
-        });
+        // Redirect to error page
+        return Response.redirect('https://tubbyretard.com/submit-error.html', 302);
       }
       
-      // Success response to the form/user
-      return new Response(JSON.stringify({ 
-        success: true, 
-        message: 'Submission received! Your story has been sent for script generation.' 
-      }), { 
-        status: 200,
-        headers: { 
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST'
-        }
-      });
+      // Success - redirect to success page
+      return Response.redirect('https://tubbyretard.com/submit-success.html', 302);
       
     } catch (error) {
       console.error('Worker error:', error);
       
-      // Return generic error (don't expose internal details)
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: 'Processing error - please try again later' 
-      }), { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      // Redirect to error page (don't expose internal details)
+      return Response.redirect('https://tubbyretard.com/submit-error.html?error=processing', 302);
     }
   }
 };
