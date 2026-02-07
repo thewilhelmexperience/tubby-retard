@@ -102,27 +102,25 @@ class MidAPIGenerator:
         if not scene:
             return None
         
-        simplified = self._simplify_prompt(scene, caption)
-        
         return ComicPanel(
             number=number,
             title=panel_title,
             scene=scene,
             description=caption,
-            simplified_prompt=simplified
+            simplified_prompt=scene  # We'll build the full prompt later
         )
     
     def _build_panel_prompt(self, panel: ComicPanel, comic_title: str) -> str:
         """Build specific prompt for each panel to match comic-003 style."""
         
         # TR character description - matching original comic style
-        tr_character = """cartoon style TR: chubby exaggerated proportions, big round belly, simple cartoon face with dots for eyes, wide expressive mouth, white captain's hat with gold anchor emblem, bright blue Hawaiian shirt with big orange hibiscus flowers, khaki shorts, flip flops, holding cigar, bold black outlines, flat bright colors, simple shading, Sunday comics style"""
+        tr_character = """cartoon style TR: chubby exaggerated proportions, big round belly, simple cartoon face with dots for eyes, wide expressive mouth, WHITE hair, white captain's hat with gold anchor emblem, bright blue Hawaiian shirt with big orange hibiscus flowers, khaki shorts, flip flops, bold black outlines, flat bright colors, simple shading, Sunday comics style"""
         
         # Panel-specific scenes with humor
         panel_prompts = {
             1: f"Professional yacht captain at helm holding radio microphone looking worried and confused, 80-foot yacht approaching tropical harbor entrance with palm trees, bright blue Caribbean water, sunny day, TR not visible yet, {tr_character}",
             
-            2: f"TR grabbing radio from captain's hand, TR face bright red shouting angry with veins popping, mouth wide open yelling, captain looking shocked and annoyed in background, yacht bridge interior with controls and windows, dramatic action, {tr_character}",
+            2: f"TR grabbing radio from captain's hand, TR face bright red shouting angry with veins popping, mouth wide open yelling 'DO YOU KNOW WHO I AM', captain looking shocked and annoyed in background, yacht bridge interior with controls and windows, dramatic action, {tr_character}",
             
             3: f"TR standing at yacht bow with arms crossed looking smug and self-important, big confident grin, captain at helm behind him looking worried and anxious, yacht entering tropical marina, palm trees and docks visible, {tr_character}",
             
