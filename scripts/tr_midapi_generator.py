@@ -113,18 +113,21 @@ class MidAPIGenerator:
     def _build_panel_prompt(self, panel: ComicPanel, comic_title: str) -> str:
         """Build specific prompt for each panel to match comic-003 style."""
         
-        # TR character description - matching original comic style
+        # TR character description - from Character Bible
         tr_character = """cartoon style TR: chubby exaggerated proportions, big round belly, simple cartoon face with dots for eyes, wide expressive mouth, WHITE hair, white captain's hat with gold anchor emblem, bright blue Hawaiian shirt with big orange hibiscus flowers, khaki shorts, flip flops, bold black outlines, flat bright colors, simple shading, Sunday comics style"""
         
-        # Panel-specific scenes with humor
+        # Captain/crew - fit and professional
+        captain_character = """cartoon style: fit healthy build, professional uniform, neat appearance, long-suffering expression, bold outlines, same art style"""
+        
+        # Panel-specific scenes with humor - using Character Bible guidelines
         panel_prompts = {
-            1: f"Professional yacht captain at helm holding radio microphone looking worried and confused, 80-foot yacht approaching tropical harbor entrance with palm trees, bright blue Caribbean water, sunny day, TR not visible yet, {tr_character}",
+            1: f"Professional yacht captain at helm holding radio microphone looking worried and confused, fit healthy build, proper uniform, neat appearance, 80-foot yacht approaching tropical harbor entrance with palm trees, bright blue Caribbean water, sunny day, TR not visible yet, {captain_character}",
             
-            2: f"TR grabbing radio from captain's hand, TR face bright red shouting angry with veins popping, mouth wide open yelling 'DO YOU KNOW WHO I AM', captain looking shocked and annoyed in background, yacht bridge interior with controls and windows, dramatic action, {tr_character}",
+            2: f"TR grabbing radio from captain's hand, TR face bright red shouting angry with veins popping, mouth wide open yelling 'DO YOU KNOW WHO I AM', captain looking shocked and annoyed in background, fit healthy build, proper uniform, yacht bridge interior with controls and windows, dramatic action, {tr_character}",
             
-            3: f"TR standing at yacht bow with arms crossed looking smug and self-important, big confident grin, captain at helm behind him looking worried and anxious, yacht entering tropical marina, palm trees and docks visible, {tr_character}",
+            3: f"TR standing at yacht bow with arms crossed looking smug and self-important, big confident grin, captain at helm behind him looking worried and anxious, fit healthy build, proper uniform, yacht entering tropical marina, palm trees and docks visible, {tr_character}",
             
-            4: f"TR's face frozen in shock and embarrassment, eyes wide, mouth agape, behind him THREE ENORMOUS mega yachts 150+ feet long docked in marina, tiny 80-foot boat in foreground, size contrast visual gag, crew in uniforms on mega yachts, {tr_character}"
+            4: f"TR's face frozen in shock and embarrassment, eyes wide, mouth agape, behind him THREE ENORMOUS mega yachts 150+ feet long docked in marina, tiny 80-foot boat in foreground, size contrast visual gag, captain standing next to TR looking smug and deadpan, fit healthy build, proper uniform, {tr_character}"
         }
         
         return panel_prompts.get(panel.number, f"{panel.simplified_prompt}, {tr_character}")
