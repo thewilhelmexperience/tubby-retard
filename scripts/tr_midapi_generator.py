@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-TR Comic Artwork Generator - MidAPI.ai Edition
+TR Comic Artwork Generator - MidAPI.ai Edition (Fixed)
 Generates consistent comic panels using Midjourney via MidAPI.ai API
-Uses --oref (Omni Reference) for TR character consistency
+Correct API endpoints and parameters
 """
 
 import os
@@ -11,14 +11,14 @@ import json
 import time
 import argparse
 from pathlib import Path
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional
 from dataclasses import dataclass
 import requests
 
 # Default settings
-DEFAULT_MODEL = "midjourney-v7"
+DEFAULT_VERSION = "7"
 DEFAULT_ASPECT_RATIO = "1:1"
-DEFAULT_MODE = "fast"  # relaxed, fast, turbo
+DEFAULT_SPEED = "fast"  # relaxed, fast, turbo
 
 
 @dataclass
@@ -46,12 +46,17 @@ class MidAPIGenerator:
         """Initialize MidAPI.ai generator."""
         self.api_key = api_key or os.getenv("MIDAPI_KEY")
         self.tr_reference_url = tr_reference_url or os.getenv("TR_REFERENCE_URL")
-        self.base_url = "https://api.midapi.ai/v1"
+        self.base_url = "https://api.midapi.ai/api/v1/mj"
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
         if not self.api_key:
-            raise ValueError("MidAPI key required. Set MIDAPI_KEY env var or pass to constructor.")
+            raise ValueError("MidAPI key required. Set MIDAPI_KEY env var.")
+        
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
     
     def parse_script_file(self, script_path: str) -> ComicScript:
         """Parse a comic script markdown file."""
@@ -83,7 +88,6 @@ class MidAPIGenerator:
     
     def _parse_panel(self, number: int, section: str) -> Optional[ComicPanel]:
         """Parse a single panel section."""
-        # Extract panel title (usually first line)
         lines = section.strip().split('\n')
         panel_title = lines[0].strip() if lines else f"Panel {number}"
         
@@ -91,14 +95,13 @@ class MidAPIGenerator:
         scene_match = re.search(r'\*\*Scene:\*\* (.+?)(?=\*\*|$)', section, re.DOTALL)
         scene = scene_match.group(1).strip() if scene_match else ""
         
-        # Extract caption (for context)
+        # Extract caption
         caption_match = re.search(r'\*\*Caption:\*\* (.+?)(?=\*\*|$)', section, re.DOTALL)
         caption = caption_match.group(1).strip() if caption_match else ""
         
         if not scene:
             return None
         
-        # Create simplified prompt for Midjourney
         simplified = self._simplify_prompt(scene, caption)
         
         return ComicPanel(
@@ -111,46 +114,30 @@ class MidAPIGenerator:
     
     def _simplify_prompt(self, scene: str, caption: str) -> str:
         """Convert detailed description to Midjourney-friendly prompt."""
-        # Remove narrative elements, keep visual description
-        # Limit to one clear sentence
-        
-        # Clean up the scene
         scene = scene.replace('\n', ' ').strip()
-        
-        # Take first sentence or first 200 chars
         if '.' in scene:
             scene = scene.split('.')[0] + '.'
-        
         if len(scene) > 200:
             scene = scene[:200] + '...'
-        
         return scene
     
     def generate_panel(self, panel: ComicPanel, comic_title: str,
-                      model: str = DEFAULT_MODEL,
-                      mode: str = DEFAULT_MODE,
+                      version: str = DEFAULT_VERSION,
+                      speed: str = DEFAULT_SPEED,
                       max_retries: int = 3) -> Optional[str]:
         """Generate a single panel using MidAPI.ai."""
         
-        # Build the prompt - keep it simple and visual
-        prompt = f"""{panel.simplified_prompt}
+        # Build the prompt - concise and visual
+        prompt = f"""{panel.simplified_prompt} TR character: chubby middle-aged man, white captain's hat with gold anchor emblem, blue Hawaiian shirt with orange flowers, khaki shorts, cigar. Style: comic book panel, bold outlines, vibrant colors, cartoon illustration"""
 
-TR character: chubby middle-aged man, white captain's hat with gold anchor emblem, blue Hawaiian shirt with orange hibiscus flowers, khaki shorts, cigar in mouth
-
-Style: comic book panel, bold black outlines, vibrant colors, cartoon illustration, clean composition"""
-
-        print(f"  Prompt: {prompt[:150]}...")
-        
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
+        print(f"  Prompt: {prompt[:100]}...")
         
         payload = {
+            "taskType": "mj_txt2img",
             "prompt": prompt,
-            "model": model,
-            "mode": mode,
-            "aspect_ratio": DEFAULT_ASPECT_RATIO
+            "speed": speed,
+            "aspectRatio": DEFAULT_ASPECT_RATIO,
+            "version": version
         }
         
         # Add character reference if available
@@ -160,44 +147,32 @@ Style: comic book panel, bold black outlines, vibrant colors, cartoon illustrati
         
         for attempt in range(max_retries):
             try:
-                print(f"  Generating... (attempt {attempt + 1}/{max_retries})")
+                print(f"  Submitting task... (attempt {attempt + 1}/{max_retries})")
                 
+                # Submit generation task
                 response = requests.post(
-                    f"{self.base_url}/imagine",
-                    headers=headers,
+                    f"{self.base_url}/generate",
+                    headers=self.headers,
                     json=payload,
                     timeout=60
                 )
                 
-                if response.status_code != 200:
-                    print(f"  API Error: {response.status_code} - {response.text}")
+                result = response.json()
+                
+                if result.get("code") != 200:
+                    print(f"  API Error: {result.get('msg', 'Unknown error')}")
                     if attempt < max_retries - 1:
                         time.sleep(5)
                         continue
                     return None
                 
-                data = response.json()
+                task_id = result["data"]["taskId"]
+                print(f"  Task started: {task_id}")
                 
-                # Check if we got a job ID (async generation)
-                if "job_id" in data:
-                    job_id = data["job_id"]
-                    print(f"  Job started: {job_id}")
-                    
-                    # Wait for completion
-                    image_url = self._wait_for_job(job_id, headers)
-                    if image_url:
-                        return image_url
-                
-                # Direct URL response
-                elif "url" in data:
-                    return data["url"]
-                
-                elif "image_url" in data:
-                    return data["image_url"]
-                
-                else:
-                    print(f"  Unexpected response: {data}")
-                    return None
+                # Wait for completion
+                image_url = self._wait_for_completion(task_id)
+                if image_url:
+                    return image_url
                     
             except Exception as e:
                 print(f"  Error on attempt {attempt + 1}: {e}")
@@ -208,37 +183,44 @@ Style: comic book panel, bold black outlines, vibrant colors, cartoon illustrati
         
         return None
     
-    def _wait_for_job(self, job_id: str, headers: Dict, 
-                     max_wait: int = 120, poll_interval: int = 5) -> Optional[str]:
-        """Poll for job completion."""
+    def _wait_for_completion(self, task_id: str, max_wait: int = 300) -> Optional[str]:
+        """Poll for task completion."""
         start_time = time.time()
+        poll_interval = 10  # Check every 10 seconds initially
         
         while time.time() - start_time < max_wait:
             try:
                 response = requests.get(
-                    f"{self.base_url}/job/{job_id}",
-                    headers=headers,
+                    f"{self.base_url}/record-info?taskId={task_id}",
+                    headers=self.headers,
                     timeout=30
                 )
                 
-                if response.status_code == 200:
-                    data = response.json()
-                    status = data.get("status", "unknown")
-                    
-                    if status == "completed":
-                        # Get the image URL
-                        if "url" in data:
-                            return data["url"]
-                        elif "image_url" in data:
-                            return data["image_url"]
-                        elif "output" in data and "url" in data["output"]:
-                            return data["output"]["url"]
-                    
-                    elif status == "failed":
-                        print(f"  Job failed: {data.get('error', 'Unknown error')}")
-                        return None
-                    
-                    print(f"  Status: {status}... waiting")
+                result = response.json()
+                
+                if result.get("code") != 200:
+                    print(f"  Status check error: {result.get('msg')}")
+                    time.sleep(poll_interval)
+                    continue
+                
+                data = result["data"]
+                success_flag = data.get("successFlag", 0)
+                
+                if success_flag == 0:
+                    print(f"  Generating... ({int(time.time() - start_time)}s)")
+                elif success_flag == 1:
+                    # Success - get image URLs
+                    result_info = data.get("resultInfoJson", {})
+                    urls = result_info.get("resultUrls", [])
+                    if urls:
+                        # Return first image (you can upscale later if needed)
+                        return urls[0].get("resultUrl")
+                    return None
+                elif success_flag in [2, 3]:
+                    # Failed
+                    error_msg = data.get("errorMessage", "Generation failed")
+                    print(f"  Generation failed: {error_msg}")
+                    return None
                 
                 time.sleep(poll_interval)
                 
@@ -246,13 +228,13 @@ Style: comic book panel, bold black outlines, vibrant colors, cartoon illustrati
                 print(f"  Poll error: {e}")
                 time.sleep(poll_interval)
         
-        print("  Timeout waiting for job completion")
+        print("  Timeout waiting for generation")
         return None
     
     def download_image(self, url: str, filepath: Path) -> bool:
         """Download image from URL to local file."""
         try:
-            response = requests.get(url, timeout=30)
+            response = requests.get(url, timeout=60)
             response.raise_for_status()
             
             with open(filepath, 'wb') as f:
@@ -263,8 +245,8 @@ Style: comic book panel, bold black outlines, vibrant colors, cartoon illustrati
             print(f"  Download error: {e}")
             return False
     
-    def generate_comic(self, script_path: str, model: str = DEFAULT_MODEL,
-                      mode: str = DEFAULT_MODE,
+    def generate_comic(self, script_path: str, version: str = DEFAULT_VERSION,
+                      speed: str = DEFAULT_SPEED,
                       skip_existing: bool = True) -> Dict:
         """Generate all panels for a comic script."""
         print(f"\n🎨 Processing: {script_path}")
@@ -296,7 +278,7 @@ Style: comic book panel, bold black outlines, vibrant colors, cartoon illustrati
                 continue
             
             # Generate image
-            image_url = self.generate_panel(panel, script.title, model, mode)
+            image_url = self.generate_panel(panel, script.title, version, speed)
             
             if image_url:
                 # Download and save
@@ -343,15 +325,15 @@ def main():
     parser.add_argument("--scripts-dir", default="scripts", help="Directory containing scripts")
     parser.add_argument("--output", default="comics/generated", help="Output directory")
     parser.add_argument("--ref-url", help="TR character reference image URL")
-    parser.add_argument("--model", default="midjourney-v7", help="Midjourney model version")
-    parser.add_argument("--mode", default="fast", choices=["relaxed", "fast", "turbo"],
-                       help="Generation mode (affects speed and cost)")
+    parser.add_argument("--version", default="7", help="Midjourney model version (6, 6.1, 7)")
+    parser.add_argument("--speed", default="fast", choices=["relaxed", "fast", "turbo"],
+                       help="Generation speed (affects cost)")
     parser.add_argument("--regenerate", action="store_true", help="Force regenerate existing panels")
     
     args = parser.parse_args()
     
     # Check for API key
-    if not os.getenv("MIDAPI_KEY") and not args.ref_url:
+    if not os.getenv("MIDAPI_KEY"):
         print("❌ Error: MIDAPI_KEY environment variable required")
         print("   Get your key at: https://midapi.ai")
         print("   Then run: export MIDAPI_KEY='your-key-here'")
@@ -368,7 +350,6 @@ def main():
         return
     
     if args.batch:
-        # Generate all drafts
         scripts_path = Path(args.scripts_dir)
         script_files = list(scripts_path.glob("comic-draft-*.md"))
         
@@ -381,18 +362,17 @@ def main():
         for script_file in script_files:
             results = generator.generate_comic(
                 str(script_file),
-                model=args.model,
-                mode=args.mode,
+                version=args.version,
+                speed=args.speed,
                 skip_existing=not args.regenerate
             )
             print(f"\n  Results: {json.dumps(results, indent=2)}")
     
     elif args.script:
-        # Generate single script
         results = generator.generate_comic(
             args.script,
-            model=args.model,
-            mode=args.mode,
+            version=args.version,
+            speed=args.speed,
             skip_existing=not args.regenerate
         )
         print(f"\n✅ Done!")
@@ -403,16 +383,9 @@ def main():
     else:
         parser.print_help()
         print("\n💡 Examples:")
-        print("  # Generate single comic with character reference:")
         print("  export MIDAPI_KEY='your-key'")
         print("  export TR_REFERENCE_URL='https://your-tr-image.png'")
         print("  python tr_midapi_generator.py scripts/comic-draft-biggest-boat-in-the-harbor.md")
-        print("")
-        print("  # Generate all drafts:")
-        print("  python tr_midapi_generator.py --batch --scripts-dir scripts")
-        print("")
-        print("  # Force regenerate with turbo speed:")
-        print("  python tr_midapi_generator.py script.md --mode turbo --regenerate")
 
 
 if __name__ == "__main__":
