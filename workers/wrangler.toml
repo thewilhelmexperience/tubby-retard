@@ -1,0 +1,29 @@
+# Cloudflare Worker Configuration for TR Story Submissions
+# Deploy with: wrangler deploy
+
+name = "tr-story-submission"
+main = "story-submission-worker.js"
+compatibility_date = "2024-02-07"
+
+# Environment variables (set these via wrangler secret or dashboard)
+[vars]
+# OPENCLAW_HOOK_URL = "https://your-openclaw-gateway:PORT/hooks/agent"
+# TELEGRAM_CHAT_ID = "6285846217"
+
+# Secrets (use: wrangler secret put OPENCLAW_HOOK_TOKEN)
+# OPENCLAW_HOOK_TOKEN = "your-secret-token-here"
+
+# Routes - where this worker will respond
+[[routes]]
+pattern = "api.tubbyretard.com/submit"
+custom_domain = true
+
+# Or use a regular route:
+# [[routes]]
+# pattern = "tubbyretard.com/api/submit"
+# zone_id = "your-cloudflare-zone-id"
+
+# KV Namespace (optional - for rate limiting or tracking submissions)
+# [[kv_namespaces]]
+# binding = "SUBMISSIONS"
+# id = "your-kv-namespace-id"

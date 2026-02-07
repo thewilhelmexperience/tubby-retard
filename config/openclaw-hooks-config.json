@@ -1,0 +1,40 @@
+# OpenClaw Gateway Configuration for TR Story Submissions
+# Add this to your OpenClaw gateway config (via onboard or config file)
+
+{
+  "hooks": {
+    "enabled": true,
+    "token": "YOUR_SECRET_TOKEN_HERE",  // Generate a strong random token
+    "path": "/hooks"
+  }
+}
+
+# Full example with other config sections:
+{
+  "gateway": {
+    "port": 18789,
+    "host": "0.0.0.0"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "YOUR_BOT_TOKEN"
+    }
+  },
+  "hooks": {
+    "enabled": true,
+    "token": "YOUR_SECRET_TOKEN_HERE",
+    "path": "/hooks"
+  }
+}
+
+# After enabling, test with:
+# curl -X POST http://localhost:18789/hooks/agent \
+#   -H 'Authorization: Bearer YOUR_SECRET_TOKEN' \
+#   -H 'Content-Type: application/json' \
+#   -d '{
+#     "message": "Test submission: Story title here...",
+#     "name": "TR-Test",
+#     "channel": "telegram",
+#     "deliver": true
+#   }'
