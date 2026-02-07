@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR Admin Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0066cc 0%, #1a1a2e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header nav {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .header nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .header nav a:hover, .header nav a.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .header .logout {
+            position: absolute;
+            right: 2rem;
+            top: 1.5rem;
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .stat-card h3 {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .stat-card.new { border-left-color: #ff6b35; }
+        .stat-card.pending { border-left-color: #ffc107; }
+        .stat-card.art { border-left-color: #17a2b8; }
+        .stat-card.scheduled { border-left-color: #6f42c1; }
+        .stat-card.published { border-left-color: #28a745; }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-submitted { background: #fff3cd; color: #856404; }
+        .status-script-created { background: #d1ecf1; color: #0c5460; }
+        .status-draft { background: #ffe0b2; color: #e65100; }
+        .status-art-pending { background: #b3e5fc; color: #01579b; }
+        .status-art-ready { background: #c8e6c9; color: #2e7d32; }
+        .status-scheduled { background: #e1bee7; color: #6a1b9a; }
+        .status-published { background: #c8e6c9; color: #1b5e20; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e55a2b;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filters select, .filters input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header nav {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🦜 TR Admin Dashboard</h1>
+        <a href="/logout" class="logout">Logout →</a>
+        <nav>
+            <a href="#" class="active" data-tab="overview">Overview</a>
+            <a href="#" data-tab="submissions">Submissions</a>
+            <a href="#" data-tab="comics">Comics</a>
+            <a href="#" data-tab="calendar">Calendar</a>
+            <a href="#" data-tab="activity">Activity</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card new">
+                <h3>New Submissions</h3>
+                <div class="number" id="stat-submissions">-</div>
+            </div>
+            <div class="stat-card pending">
+                <h3>Scripts Pending</h3>
+                <div class="number" id="stat-scripts">-</div>
+            </div>
+            <div class="stat-card art">
+                <h3>Art Pending</h3>
+                <div class="number" id="stat-art">-</div>
+            </div>
+            <div class="stat-card scheduled">
+                <h3>Scheduled</h3>
+                <div class="number" id="stat-scheduled">-</div>
+            </div>
+            <div class="stat-card published">
+                <h3>Published</h3>
+                <div class="number" id="stat-published">-</div>
+            </div>
+        </div>
+        
+        <!-- Recent Submissions -->
+        <div class="section">
+            <h2>📥 Recent Submissions</h2>
+            <div id="submissions-loading" class="loading">Loading...</div>
+            <div id="submissions-content" style="display: none;">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submissions-table">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comic Pipeline -->
+        <div class="section">
+            <h2>🎨 Comic Pipeline</h2>
+            <div id="comics-loading" class="loading">Loading...</div>
+            <div id="comics-content" style="display: none;">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comics-table">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Load stats
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                document.getElementById('stat-submissions').textContent = stats.newSubmissions || 0;
+                document.getElementById('stat-scripts').textContent = stats.scriptsPending || 0;
+                document.getElementById('stat-art').textContent = stats.artPending || 0;
+                document.getElementById('stat-scheduled').textContent = stats.scheduled || 0;
+                document.getElementById('stat-published').textContent = stats.published || 0;
+            } catch (err) {
+                console.error('Failed to load stats:', err);
+            }
+        }
+        
+        // Load submissions
+        async function loadSubmissions() {
+            try {
+                const response = await fetch('/api/submissions?limit=10');
+                const submissions = await response.json();
+                
+                const tbody = document.getElementById('submissions-table');
+                tbody.innerHTML = '';
+                
+                if (submissions.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="empty-state-icon">📭</div>No submissions yet</td></tr>';
+                } else {
+                    submissions.forEach(sub => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><strong>${escapeHtml(sub.title)}</strong></td>
+                            <td>${escapeHtml(sub.location || '-')}</td>
+                            <td>${formatDate(sub.created_at)}</td>
+                            <td><span class="status-badge status-${sub.status}">${sub.status}</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" onclick="viewSubmission(${sub.id})">View</button>
+                                <button class="btn btn-secondary btn-sm" onclick="createScript(${sub.id})">Create Script</button>
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                }
+                
+                document.getElementById('submissions-loading').style.display = 'none';
+                document.getElementById('submissions-content').style.display = 'block';
+            } catch (err) {
+                console.error('Failed to load submissions:', err);
+            }
+        }
+        
+        // Load comics
+        async function loadComics() {
+            try {
+                const response = await fetch('/api/comics?limit=10');
+                const comics = await response.json();
+                
+                const tbody = document.getElementById('comics-table');
+                tbody.innerHTML = '';
+                
+                if (comics.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="empty-state-icon">🎨</div>No comics in pipeline</td></tr>';
+                } else {
+                    comics.forEach(comic => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><strong>${escapeHtml(comic.title)}</strong></td>
+                            <td>${escapeHtml(comic.location || '-')}</td>
+                            <td><span class="status-badge status-${comic.status}">${comic.status}</span></td>
+                            <td>${formatDate(comic.created_at)}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" onclick="viewComic(${comic.id})">View</button>
+                                <button class="btn btn-secondary btn-sm" onclick="editComic(${comic.id})">Edit</button>
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                }
+                
+                document.getElementById('comics-loading').style.display = 'none';
+                document.getElementById('comics-content').style.display = 'block';
+            } catch (err) {
+                console.error('Failed to load comics:', err);
+            }
+        }
+        
+        // Helper functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+        
+        function viewSubmission(id) {
+            alert('View submission ' + id + ' - Feature coming soon!');
+        }
+        
+        function createScript(id) {
+            alert('Create script for submission ' + id + ' - Feature coming soon!');
+        }
+        
+        function viewComic(id) {
+            alert('View comic ' + id + ' - Feature coming soon!');
+        }
+        
+        function editComic(id) {
+            alert('Edit comic ' + id + ' - Feature coming soon!');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadSubmissions();
+            loadComics();
+            
+            // Refresh every 30 seconds
+            setInterval(() => {
+                loadStats();
+                loadSubmissions();
+                loadComics();
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
