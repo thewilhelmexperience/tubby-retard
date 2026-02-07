@@ -14,12 +14,11 @@ compatibility_date = "2024-02-07"
 # OPENCLAW_HOOK_TOKEN = "your-secret-token-here"
 
 # Routes - where this worker will respond
-# Option 1: Simple subdomain (recommended)
+# Option 1: Custom subdomain (catches ALL paths on api.tubbyretard.com)
 [[routes]]
-pattern = "api.tubbyretard.com/*"
-custom_domain = true
+custom_domain = "api.tubbyretard.com"
 
-# Option 2: Or use a regular route on your main domain:
+# Option 2: Or use a regular route (requires zone_id):
 # [[routes]]
 # pattern = "tubbyretard.com/api/*"
 # zone_id = "your-cloudflare-zone-id"
