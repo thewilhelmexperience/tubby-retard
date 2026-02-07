@@ -14,13 +14,14 @@ compatibility_date = "2024-02-07"
 # OPENCLAW_HOOK_TOKEN = "your-secret-token-here"
 
 # Routes - where this worker will respond
+# Option 1: Simple subdomain (recommended)
 [[routes]]
-pattern = "api.tubbyretard.com/submit"
+pattern = "api.tubbyretard.com/*"
 custom_domain = true
 
-# Or use a regular route:
+# Option 2: Or use a regular route on your main domain:
 # [[routes]]
-# pattern = "tubbyretard.com/api/submit"
+# pattern = "tubbyretard.com/api/*"
 # zone_id = "your-cloudflare-zone-id"
 
 # KV Namespace (optional - for rate limiting or tracking submissions)
