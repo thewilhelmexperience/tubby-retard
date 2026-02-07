@@ -1,4 +1,4 @@
-# Comic Script #004 - "Waterskiing with TR"
+# Comic Script #004 - "Waterskiing with TR" (REVISED)
 ## Based on user submission from stories@tubbyretard.com
 
 ---
@@ -6,106 +6,109 @@
 ## Title: Waterskiing with TR
 
 ## Caption: 
-TR offers to take the kids waterskiing. His approach to safety is... minimalist.
+TR takes the kids waterskiing. The lesson? Always bring a spotter... and maybe a map back to the dock.
 
 ---
 
 ## Panel 1: The Setup
 
-**Scene:** Interior of an old woody Century ski boat. TR in his Hawaiian shirt and captain's hat at the helm, turning back to give a thumbs up to two boys (his son and friend) in the water behind the boat. The ski rope is properly attached to the chrome ski pylon (harness) in the center of the boat. The boys are ready in the water with their skis.
+**Scene:** At the dock next to a vintage wood-grain Century ski boat. Two boys (son and friend) are excited, ready in the water with life jackets and skis. TR stands on the dock or in the boat, holding two ski ropes that are already rigged and ready to go. He's got his cigar and captain's hat, looking pleased.
 
-**TR:** "Just like the pros, boys! Rope's hooked to the pylon—you're golden!"
+**TR:** "Alright boys, ropes are rigged! Who's ready to shred?"
+
+**Boys (excited):** "WE ARE!"
 
 **Visual Details:**
-- Classic wood-grain Century ski boat interior
-- Chrome ski pylon (harness) with rope attached
-- TR giving thumbs up from helm
-- Two boys in life jackets, holding ski rope handle, ready in water
-- Beautiful sunny day, lake setting
+- Boys in water, skis on, life jackets, excited expressions
+- Two ski ropes ready to go
+- TR on dock/boat, cigar in hand, giving thumbs up
+- Century ski boat with chrome ski pylon visible
+- Sunny day, lake setting, dock in background
 
 **DALL-E Prompt:**
 ```
-Comic panel in a humorous cartoon style. Interior view of a vintage wood-grain Century ski boat (classic wooden boat). A chubby middle-aged man wearing a captain's hat with anchor emblem and a blue Hawaiian shirt with orange flowers is at the helm, turning back with a big grin and giving thumbs up. In the center of the boat, a shiny chrome ski pylon (harness) has a ski rope attached to it. Through the back of the boat, two young boys (around 10 years old) in life jackets are visible in the water, holding the ski rope handle, ready to waterski. Sunny day, lake water. Speech bubble from TR: "Just like the pros, boys! Rope's hooked to the pylon—you're golden!" Vibrant colors, slightly exaggerated expressions, retro boat aesthetic.
+Comic panel in a humorous cartoon style. At a dock next to a vintage wood-grain Century ski boat. Two young boys (around 10 years old) in life jackets and water skis are floating in the water, looking excited and enthusiastic. A chubby middle-aged man wearing a captain's hat with anchor emblem and a blue Hawaiian shirt with orange flowers stands on the dock holding two ski ropes that are attached to the boat's chrome ski pylon. He has a cigar in his mouth and looks pleased. Sunny day, lake water, wooden dock. Speech bubble from TR: "Alright boys, ropes are rigged! Who's ready to shred?" Speech from excited boys: "WE ARE!" Vibrant colors, slightly exaggerated expressions, retro boat aesthetic.
 ```
 
 ---
 
 ## Panel 2: The Launch
 
-**Scene:** View from inside the Century ski boat showing TR at the helm, cigar in mouth, looking straight ahead with intense focus. Behind him, we can see the chrome ski pylon with rope attached going back to the boys. NO spotter visible. TR's hand is slamming the throttle forward.
+**Scene:** From the boys' perspective in the water—looking up at the back of the Century boat. TR is visible at the helm through the windshield or from behind, cigar in mouth, looking straight ahead with intense focus. NO spotter visible in the boat. The boys are holding the rope handles, yelling.
 
-**TR:** *(thinking bubble)* Eyes forward. No distractions.
+**Boys (yelling):** "HIT IT!"
 
-**Boys (in water, yelling):** "HIT IT!"
+**TR:** *(thinking bubble)* Full throttle. No spotter needed. I've got this.
 
 **Visual Details:**
-- TR from behind/shoulder, eyes fixed forward
-- Cigar in mouth
+- View from water level, boys looking up at boat
+- TR at helm, cigar in mouth, intense forward gaze
 - Throttle hand pushing forward
-- No spotter in sight
-- Ski pylon visible with rope going back to boys in water
-- Boys in water, ready to go
+- NO spotter visible anywhere in the boat
+- Ski pylon with two taut ropes
+- Water about to erupt into motion
 
 **DALL-E Prompt:**
 ```
-Comic panel in a humorous cartoon style. View from inside a vintage wood-grain Century ski boat, behind a chubby middle-aged man in a captain's hat and blue Hawaiian shirt with orange flowers. He's sitting at the helm looking straight ahead with intense focus, cigar in mouth. His hand is pushing the throttle lever forward. In the center of the boat, a chrome ski pylon is visible with a ski rope attached, going back toward the water. NO spotter is visible. The man's expression is serious and concentrated. Speech bubble from boys in water behind boat: "HIT IT!" Bright sunny day, lake water, vintage wooden boat interior. Vibrant colors, exaggerated cartoon style.
+Comic panel in a humorous cartoon style. View from the water level looking up at the back of a vintage wood-grain Century ski boat. Two young boys in life jackets are visible in the foreground holding ski rope handles, looking up and yelling. Through the boat's windshield or from a rear view, a chubby man in a captain's hat and blue Hawaiian shirt with orange flowers is visible at the helm, cigar in mouth, looking straight ahead with intense focus. His hand is pushing the throttle forward. NO spotter is visible in the boat. The chrome ski pylon is visible with two ski ropes attached. Speech bubble from boys: "HIT IT!" Thought bubble from TR: "Full throttle. No spotter needed. I've got this." Bright sunny day, lake water about to erupt into wake. Vibrant colors, dynamic composition, exaggerated cartoon style.
 ```
 
 ---
 
 ## Panel 3: The Joyride
 
-**Scene:** Wide shot from the side showing the vintage Century ski boat planing across the water. TR at the helm, cigar still in mouth, looking forward with a satisfied smile. Behind the boat, the rope attached to the ski pylon is taut, dragging the two boys through the water at high speed. The boys are holding on for dear life, faces showing shock and terror, massive spray of water. A clock or "30 MINUTES LATER" caption.
+**Scene:** Wide shot showing the Century ski boat planing at high speed across the lake. TR at the helm, cigar puffing smoke, completely blissed out and unaware. Behind the boat, the two boys are being dragged through the water at high speed on their skis—holding on for dear life, terrified faces, massive spray. "ONE HIGH-SPEED LAP LATER..." text overlay.
 
-**TR:** *(blissfully unaware)* "Smooth as silk!"
+**TR:** *(blissfully unaware, singing or yelling)* "Livin' the dream! WOOOO!"
 
 **Visual Details:**
-- Century boat planing/speeding across lake
-- TR completely oblivious, enjoying the ride
-- Ski pylon visible with taut rope
-- Boys being dragged at high speed, barely holding on
-- Huge spray of water
-- "30 MINUTES LATER" text or clock showing time passed
-- Comic exaggeration of the danger
+- Century boat speeding, big wake
+- TR oblivious, enjoying himself, cigar smoke trailing
+- Boys being dragged at terrifying speed on skis
+- Arms barely holding on, shock/terror on faces
+- Massive water spray
+- Time-lapse text: "ONE HIGH-SPEED LAP LATER..."
 
 **DALL-E Prompt:**
 ```
-Comic panel in a humorous cartoon style. Side view of a vintage wood-grain Century ski boat speeding across a lake, leaving a huge wake. At the helm, a chubby man in a captain's hat and blue Hawaiian shirt with orange flowers is smiling contentedly, cigar in mouth, looking forward, completely oblivious. A chrome ski pylon is visible on the boat with a taut ski rope attached. Behind the boat, two young boys in life jackets are being dragged through the water at high speed, holding onto the rope handle with terrified expressions, massive water spray around them. Text overlay: "30 MINUTES LATER..." The boys look like they're barely holding on for their lives. TR has a satisfied smile. Speech bubble from TR: "Smooth as silk!" Exaggerated motion, dynamic water effects, vintage boat aesthetic, vibrant colors, cartoon style with comedic timing.
+Comic panel in a humorous cartoon style. Side view of a vintage wood-grain Century ski boat planing at high speed across a lake, leaving a massive wake. At the helm, a chubby man in a captain's hat and blue Hawaiian shirt with orange flowers is grinning ecstatically, cigar puffing smoke, completely oblivious and enjoying himself. Behind the boat, two young boys in life jackets are waterskiing but being dragged at terrifying high speed, holding onto rope handles with shocked terrified expressions, massive water spray engulfing them. Text overlay: "ONE HIGH-SPEED LAP LATER..." TR has arms raised in celebration. Speech bubble from TR: "Livin' the dream! WOOOO!" Dynamic motion lines, huge wake, exaggerated expressions, vibrant colors, vintage boat aesthetic, cartoon comedic timing.
 ```
 
 ---
 
-## Panel 4: The Aftermath
+## Panel 4: The Abandonment
 
-**Scene:** At the dock. The Century boat is tied up. TR has just stepped onto the dock with his cigar still lit, looking proud and satisfied, walking away. Behind him, the two boys are still attached to the ski pylon by the rope, collapsed on the back seat or swim platform of the boat, completely exhausted, sprawled out like they've just survived an ordeal. The rope is still taut/attached.
+**Scene:** At the dock. The Century boat is tied off. TR has already stepped onto the dock and is walking away triumphantly down the dock, cigar still in mouth, arms raised in victory, completely ignoring what's behind him. In the water near the dock (but not at it), the two boys are floating exhausted, still in their skis, barely treading water, looking completely spent and abandoned. TR is walking away without a backward glance.
 
-**TR:** "Another successful lesson! Who's ready for round two?"
+**TR:** *(walking away triumphantly)* "Nailed it! Another perfect lesson!"
 
-**Boys:** *(too exhausted to respond, one weakly)* "We... we can't feel our arms..."
+**Boy 1 (weakly):** "We... we're still in the water..."
+
+**Boy 2:** "I think... I swallowed half the lake..."
 
 **Visual Details:**
-- TR walking away from the boat onto dock, cigar puffing smoke
-- Proud posture, patting himself on back
-- Century boat tied to dock
-- Boys still attached to ski pylon via rope, collapsed on boat
-- Completely spent, soaked, exhausted expressions
-- Late afternoon/dock setting
+- TR walking down dock away from boat, victory pose, cigar
+- Century boat tied to dock, empty
+- Boys in water 20-30 feet from dock, exhausted, floating
+- Still wearing skis, life jackets
+- Complete contrast—TR triumphant vs boys defeated
+- Late afternoon lighting
 
 **DALL-E Prompt:**
 ```
-Comic panel in a humorous cartoon style. A vintage wood-grain Century ski boat tied to a dock. A chubby man in a captain's hat and blue Hawaiian shirt with orange flowers is stepping off the boat onto the dock, cigar in mouth, looking proud and satisfied with himself. He's walking away from the boat confidently. Inside the boat, two young boys in life jackets are still attached to the chrome ski pylon by a ski rope, collapsed and completely exhausted on the back seat of the boat. They're sprawled out as if they've just survived an ordeal, soaked and spent. The rope is still connected to the pylon. TR has a proud smile. Speech bubble from TR: "Another successful lesson! Who's ready for round two?" Small speech from one exhausted boy: "We... can't feel our arms..." Lake dock setting, late afternoon lighting, vintage wooden boat aesthetic, vibrant colors, humorous cartoon exaggeration.
+Comic panel in a humorous cartoon style. At a dock, a vintage wood-grain Century ski boat is tied up. A chubby man in a captain's hat and blue Hawaiian shirt with orange flowers is walking triumphantly down the dock AWAY from the boat, arms raised in victory, cigar in mouth, looking proud and satisfied. He is completely ignoring what's behind him. In the lake water near (but not at) the dock, two young boys in life jackets and waterskis are floating exhausted, barely treading water, looking completely spent and abandoned. They're 20-30 feet from the dock. The boys look like they're struggling to stay afloat. TR is walking away without a backward glance. Speech bubble from TR walking away: "Nailed it! Another perfect lesson!" Speech from exhausted Boy 1: "We... we're still in the water..." Speech from Boy 2: "I think... I swallowed half the lake..." Lake dock setting, late afternoon lighting, vintage boat aesthetic, vibrant colors, humorous cartoon exaggeration with dark comedy tone.
 ```
 
 ---
 
 ## Character Consistency Notes:
-- TR: Chubby build, captain's hat with anchor emblem, blue Hawaiian shirt with orange/red flowers, khaki shorts, cigar (various stages of smoking), oblivious/confident expression
-- Boys: Around 10 years old, life jackets, swim trunks, varying expressions from excited → terrified → exhausted
-- Setting: Vintage wood-grain Century ski boat, lake water, sunny day
-- Key prop: Chrome ski pylon (harness) in center of boat
+- TR: Chubby build, captain's hat with anchor emblem, blue Hawaiian shirt with orange/red flowers, khaki shorts, cigar (puffing smoke in panels 2-4), completely oblivious/confident expression, triumphantly walks away without looking back
+- Boys: Around 10 years old, life jackets, waterskis, varying expressions from excited (panel 1) → terrified (panel 3) → exhausted/abandoned (panel 4), left to swim back on their own
+- Setting: Vintage wood-grain Century ski boat, lake setting with dock, sunny day turning to late afternoon
+- Key details: Two ski ropes, NO spotter ever, one high-speed lap only, TR walks away and leaves boys in the water
 
 ## Tone: 
-Satirical, absurd, highlighting dangerous incompetence presented as competence. TR is completely unaware of how terrifying this was for the children. The vintage Century boat adds to the nostalgic/retro charm.
+Satirical, darkly absurd, highlighting dangerous incompetence presented as competence. TR is completely unaware that he's abandoned the children in the water. The contrast between his triumph and their exhaustion is the punchline.
 
 ---
 
