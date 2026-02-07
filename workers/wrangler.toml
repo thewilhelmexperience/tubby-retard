@@ -6,6 +6,9 @@ main = "story-submission-worker.js"
 compatibility_date = "2024-02-07"
 account_id = "63aaa8cc7274658af326d5b9114995e3"
 
+# Enable workers.dev URL for testing while DNS propagates
+workers_dev = true
+
 # Enable observability logs for debugging
 [observability]
 enabled = true
