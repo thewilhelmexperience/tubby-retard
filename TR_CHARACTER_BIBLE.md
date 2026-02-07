@@ -41,9 +41,74 @@
 
 ---
 
-## 👥 Supporting Characters
+## 👥 Character Bibles
 
-### The Captain (Name: TBD)
+---
+
+### 🧢 THE CAPTAIN - Character Bible
+
+#### Core Identity
+- **Role:** Long-suffering professional yacht captain
+- **Function:** The straight man to TR's chaos; voice of reason that goes unheeded
+- **Arc:** Never learns - stays professional despite TR's repeated insanity
+
+#### Physical Appearance
+- **Build:** Fit, healthy, athletic - the opposite of TR
+- **Age:** 35-50, weathered but distinguished
+- **Hair:** Neat, professional cut (varies by captain - salt-and-pepper, dark, etc.)
+- **Face:** Professional, patient expression, usually slightly concerned
+- **Attire:** 
+  - Impeccable captain's uniform (white or navy depending on occasion)
+  - Shoulder epaulettes with proper rank insignia
+  - Clean, pressed appearance always
+  - Professional shoes (never flip-flops)
+- **Posture:** Upright, professional, ready to react to emergencies
+
+#### Personality Traits
+- **Professional:** Takes his job seriously despite the circumstances
+- **Patient:** Has the patience of a saint (required for TR)
+- **Deadpan:** Delivers dry observations about TR's failures
+- **Competent:** Actually knows how to run a yacht
+- **Long-suffering:** Has seen things. Many things.
+- **Quietly Judgmental:** You can see it in his eyes
+- **Safety-conscious:** Constantly worried about TR's latest idea
+
+#### Speech Patterns
+- **Tone:** Professional, calm (even when panicking inside)
+- **Volume:** Normal speaking voice (not shouting like TR)
+- **Style:** 
+  - Dry observations: "Biggest boat, huh?"
+  - Safety warnings: "Sir, that's not recommended..."
+  - Quiet resignation: *thought bubble* "This is going to be bad..."
+  - Occasional deadpan jokes at TR's expense
+- **Catchphrases:**
+  - "With respect, sir..." (before being ignored)
+  - "That's... not standard procedure."
+  - *sigh* "Yes, sir."
+
+#### Visual Consistency
+- Always looks neat and professional
+- Expression usually neutral to slightly concerned
+- Body language: ready stance, professional posture
+- Never looks as disheveled as TR
+- Contrast: Fit vs TR's chubby, Professional vs TR's chaotic
+
+#### Relationship with TR
+- **Dynamic:** Professional vs Clueless
+- **Patience Level:** Infinite (has to be)
+- **Coping Mechanism:** Dry humor, mental notes for memoir
+- **Power Dynamic:** TR thinks he's in charge; Captain actually runs everything
+- **Emergency Response:** Always ready to save TR from himself
+
+#### In Stories
+- **Position:** Usually at helm or nearby when chaos erupts
+- **Reaction:** Tries to warn TR, gets ignored, cleans up mess
+- **Comedy Role:** The voice of sanity that goes unheeded
+- **Audience Surrogate:** We're all the Captain watching TR
+
+---
+
+### The Captain (General Info)
 - **Build:** Fit, professional, long-suffering
 - **Appearance:** Proper uniform, always neat, weathered but dignified
 - **Personality:** Professional, patient, deadpan, the straight man to TR's antics
