@@ -62,6 +62,31 @@
             font-weight: 700;
         }
         
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            min-width: 2rem;
+            text-align: center;
+        }
+        
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--sunset-orange);
+            transform: translateY(-2px);
+        }
+        
         /* Navigation */
         nav ul {
             display: flex;
@@ -261,6 +286,13 @@
             flex-wrap: wrap;
         }
         
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
         footer a {
             color: var(--sunset-orange);
             text-decoration: none;
@@ -312,6 +344,11 @@
                     <li><a href="submit.html">Submit Story</a></li>
                 </ul>
             </nav>
+            <div class="social-links">
+                <a href="https://x.com/thetubbyretard" target="_blank" title="X/Twitter">𝕏</a>
+                <a href="https://www.facebook.com/profile.php?id=61587890901345" target="_blank" title="Facebook">f</a>
+                <a href="https://instagram.com/thetubbyretard" target="_blank" title="Instagram">📷</a>
+            </div>
         </div>
     </header>
 
@@ -375,7 +412,11 @@
             <a href="archive.html">Archive</a>
             <a href="about.html">About</a>
             <a href="submit.html">Submit Story</a>
+        </div>
+        <div class="social-footer" style="margin-top: 1rem;">
             <a href="https://x.com/thetubbyretard" target="_blank">𝕏 @thetubbyretard</a>
+            <a href="https://www.facebook.com/profile.php?id=61587890901345" target="_blank">Facebook</a>
+            <a href="https://instagram.com/thetubbyretard" target="_blank">Instagram @thetubbyretard</a>
         </div>
         <p class="disclaimer">
             All stories are submitted anonymously by yacht crew members. TR is a fictional character. 
