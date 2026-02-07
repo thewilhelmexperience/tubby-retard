@@ -6,6 +6,12 @@ main = "story-submission-worker.js"
 compatibility_date = "2024-02-07"
 account_id = "63aaa8cc7274658af326d5b9114995e3"
 
+# Enable observability logs for debugging
+[observability]
+enabled = true
+[observability.logs]
+enabled = true
+
 # Environment variables (set these via wrangler secret or dashboard)
 [vars]
 # OPENCLAW_HOOK_URL = "https://your-openclaw-gateway:PORT/hooks/agent"
