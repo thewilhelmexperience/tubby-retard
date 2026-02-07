@@ -92,13 +92,26 @@ export default {
     }
 
     try {
-      // Parse the form submission
-      const formData = await request.json();
+      // Parse the form submission (handle both JSON and form-data)
+      let rawTitle, rawStory, rawLocation, rawEmail;
       
-      // Extract fields (Formspree format or direct form POST)
-      const rawTitle = formData.title || formData._title || formData['title'] || '';
-      const rawStory = formData.story || formData._story || formData['story'] || formData.message || '';
-      const rawLocation = formData.location || formData._location || formData['location'] || '';
+      const contentType = request.headers.get('content-type') || '';
+      
+      if (contentType.includes('application/json')) {
+        // JSON format
+        const jsonData = await request.json();
+        rawTitle = jsonData.title || '';
+        rawStory = jsonData.story || '';
+        rawLocation = jsonData.location || '';
+        rawEmail = jsonData.email || '';
+      } else {
+        // Form data format (application/x-www-form-urlencoded or multipart/form-data)
+        const formData = await request.formData();
+        rawTitle = formData.get('title') || '';
+        rawStory = formData.get('story') || '';
+        rawLocation = formData.get('location') || '';
+        rawEmail = formData.get('email') || '';
+      }
       
       // Sanitize all inputs
       const title = sanitizeInput(rawTitle, MAX_TITLE_LENGTH);
