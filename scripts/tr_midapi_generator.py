@@ -112,14 +112,24 @@ class MidAPIGenerator:
             simplified_prompt=simplified
         )
     
-    def _simplify_prompt(self, scene: str, caption: str) -> str:
-        """Convert detailed description to Midjourney-friendly prompt."""
-        scene = scene.replace('\n', ' ').strip()
-        if '.' in scene:
-            scene = scene.split('.')[0] + '.'
-        if len(scene) > 200:
-            scene = scene[:200] + '...'
-        return scene
+    def _build_panel_prompt(self, panel: ComicPanel, comic_title: str) -> str:
+        """Build specific prompt for each panel to match comic-003 style."""
+        
+        # TR character description - matching original comic style
+        tr_character = """cartoon style TR: chubby exaggerated proportions, big round belly, simple cartoon face with dots for eyes, wide expressive mouth, white captain's hat with gold anchor emblem, bright blue Hawaiian shirt with big orange hibiscus flowers, khaki shorts, flip flops, holding cigar, bold black outlines, flat bright colors, simple shading, Sunday comics style"""
+        
+        # Panel-specific scenes with humor
+        panel_prompts = {
+            1: f"Professional yacht captain at helm holding radio microphone looking worried and confused, 80-foot yacht approaching tropical harbor entrance with palm trees, bright blue Caribbean water, sunny day, TR not visible yet, {tr_character}",
+            
+            2: f"TR grabbing radio from captain's hand, TR face bright red shouting angry with veins popping, mouth wide open yelling, captain looking shocked and annoyed in background, yacht bridge interior with controls and windows, dramatic action, {tr_character}",
+            
+            3: f"TR standing at yacht bow with arms crossed looking smug and self-important, big confident grin, captain at helm behind him looking worried and anxious, yacht entering tropical marina, palm trees and docks visible, {tr_character}",
+            
+            4: f"TR's face frozen in shock and embarrassment, eyes wide, mouth agape, behind him THREE ENORMOUS mega yachts 150+ feet long docked in marina, tiny 80-foot boat in foreground, size contrast visual gag, crew in uniforms on mega yachts, {tr_character}"
+        }
+        
+        return panel_prompts.get(panel.number, f"{panel.simplified_prompt}, {tr_character}")
     
     def generate_panel(self, panel: ComicPanel, comic_title: str,
                       version: str = DEFAULT_VERSION,
@@ -127,10 +137,10 @@ class MidAPIGenerator:
                       max_retries: int = 3) -> Optional[str]:
         """Generate a single panel using MidAPI.ai."""
         
-        # Build the prompt - concise and visual
-        prompt = f"""{panel.simplified_prompt} TR character: chubby middle-aged man, white captain's hat with gold anchor emblem, blue Hawaiian shirt with orange flowers, khaki shorts, cigar. Style: comic book panel, bold outlines, vibrant colors, cartoon illustration"""
-
-        print(f"  Prompt: {prompt[:100]}...")
+        # Build specific prompt for this panel
+        prompt = self._build_panel_prompt(panel, comic_title)
+        
+        print(f"  Panel {panel.number} prompt: {prompt[:120]}...")
         
         payload = {
             "taskType": "mj_txt2img",
