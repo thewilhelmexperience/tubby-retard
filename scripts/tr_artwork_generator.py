@@ -154,37 +154,42 @@ Make sure:
 
         return full_prompt
     
-    def generate_panel(self, prompt: str, size: str = "1024x1024", quality: str = "high", 
+    def generate_panel(self, prompt: str, size: str = "1024x1024", quality: str = "hd",
                       max_retries: int = 3) -> Optional[bytes]:
         """Generate a single panel image using OpenAI Images API."""
+        import requests
+
         for attempt in range(max_retries):
             try:
                 print(f"  Generating... (attempt {attempt + 1}/{max_retries})")
-                
+
                 response = self.client.images.generate(
-                    model="gpt-image-1.5",  # Latest and best model
+                    model="dall-e-3",  # Use DALL-E 3 (more stable)
                     prompt=prompt,
                     size=size,
                     quality=quality,
-                    n=1,
-                    response_format="b64_json"
+                    n=1
                 )
-                
-                # Decode base64 image
-                image_data = base64.b64decode(response.data[0].b64_json)
-                
+
+                # Get image URL and download
+                image_url = response.data[0].url
+
+                # Download the image
+                image_response = requests.get(image_url, timeout=30)
+                image_response.raise_for_status()
+
                 # Store the revised prompt for reference
                 revised_prompt = getattr(response.data[0], 'revised_prompt', '')
                 if revised_prompt:
                     print(f"  Revised prompt: {revised_prompt[:100]}...")
-                
-                return image_data
-                
+
+                return image_response.content
+
             except Exception as e:
                 print(f"  Error on attempt {attempt + 1}: {e}")
                 if attempt == max_retries - 1:
                     return None
-                    
+
         return None
     
     def save_panel(self, image_data: bytes, slug: str, panel_number: int, 
